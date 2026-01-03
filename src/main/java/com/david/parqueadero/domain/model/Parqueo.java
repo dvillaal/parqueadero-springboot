@@ -1,9 +1,6 @@
 package com.david.parqueadero.domain.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -36,20 +33,12 @@ public class Parqueo {
         return vehiculo;
     }
 
-    public UUID getId() {
-        return id;
-    }
-
     public LocalDateTime getHoraIngreso() {
         return horaIngreso;
     }
 
     public LocalDateTime getHoraSalida() {
         return horaSalida;
-    }
-
-    public BigDecimal getValorCobrado() {
-        return valorCobrado;
     }
 
     public void setHoraSalida(LocalDateTime horaSalida) {

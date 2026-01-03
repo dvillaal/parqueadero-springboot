@@ -30,4 +30,5 @@ public class Vehiculo {
     public TipoVehiculo getTipo() {
         return tipo;
     }
+
 }

@@ -1,7 +1,9 @@
-package com.david.parqueadero.application.usecases.RegistrarEntrada;
+package com.david.parqueadero.domain.useCases.RegistrarEntrada;
 
 import com.david.parqueadero.domain.port.out.ParqueoRepositoryPort;
+import org.springframework.stereotype.Component;
 
+@Component
 public class VerificarVehiculoNoActivoUseCase {
     private final ParqueoRepositoryPort parqueoRepositoryPort;
 

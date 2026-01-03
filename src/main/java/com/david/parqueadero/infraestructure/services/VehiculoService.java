@@ -1,15 +1,17 @@
-package com.david.parqueadero.infraestructure.adapters;
+package com.david.parqueadero.infraestructure.services;
 
 import com.david.parqueadero.domain.model.Vehiculo;
 import com.david.parqueadero.domain.port.out.VehiculoRepositoryPort;
 import com.david.parqueadero.infraestructure.repositories.JpaVehiculoRepository;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-public class VehiculoRepositoryAdapter implements VehiculoRepositoryPort {
+@Component
+public class VehiculoService implements VehiculoRepositoryPort {
     private final JpaVehiculoRepository jpaRepository;
 
-    public VehiculoRepositoryAdapter(JpaVehiculoRepository jpaRepository) {
+    public VehiculoService(JpaVehiculoRepository jpaRepository) {
         this.jpaRepository = jpaRepository;
     }
 
@@ -20,6 +22,6 @@ public class VehiculoRepositoryAdapter implements VehiculoRepositoryPort {
 
     @Override
     public Optional<Vehiculo> buscarPorPlaca(String placa) {
-        return jpaRepository.buscarPorPlaca(placa);
+        return jpaRepository.findByPlaca(placa);
     }
 }

@@ -1,29 +1,29 @@
-package com.david.parqueadero.infraestructure.adapters;
+package com.david.parqueadero.infraestructure.services;
 
 import com.david.parqueadero.domain.model.Parqueo;
 import com.david.parqueadero.domain.model.enums.TipoVehiculo;
 import com.david.parqueadero.domain.port.out.ParqueoRepositoryPort;
 import com.david.parqueadero.infraestructure.repositories.JpaParqueoRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-@Repository
-public class ParqueoRepositoryAdapter implements ParqueoRepositoryPort {
+@Component
+public class ParqueoService implements ParqueoRepositoryPort {
     private final JpaParqueoRepository jpaRepository;
 
-    public ParqueoRepositoryAdapter(JpaParqueoRepository jpaParqueoRepository) {
+    public ParqueoService(JpaParqueoRepository jpaParqueoRepository) {
         this.jpaRepository = jpaParqueoRepository;
     }
 
     @Override
     public int contarVehiculosPorTipo(TipoVehiculo tipoVehiculo) {
-        return jpaRepository.contarVehiculosPorTipo(tipoVehiculo);
+        return jpaRepository.countByVehiculoTipo(tipoVehiculo);
     }
 
     @Override
     public Optional<Parqueo> buscarActivoPorPlaca(String placa) {
-        return jpaRepository.buscarActivoPorPlaca(placa);
+        return jpaRepository.findByVehiculo_PlacaAndHoraSalidaIsNull(placa);
     }
 
     @Override

@@ -1,16 +1,15 @@
-package com.david.parqueadero.application.services;
+package com.david.parqueadero.domain.useCases.RegistrarEntrada;
 
-import com.david.parqueadero.application.usecases.RegistrarEntrada.VerificarVehiculoNoActivoUseCase;
-import com.david.parqueadero.application.usecases.RegistrarEntrada.RevisarDisponibilidadUseCase;
-import com.david.parqueadero.application.usecases.RegistrarEntrada.GuardarParqueoUseCase;
 import com.david.parqueadero.domain.model.enums.TipoVehiculo;
+import org.springframework.stereotype.Component;
 
-public class RegistrarEntradaService {
+@Component
+public class RegistrarEntradaUseCase {
     private final VerificarVehiculoNoActivoUseCase verificarVehiculoNoActivoUseCase;
     private final RevisarDisponibilidadUseCase revisarDisponibilidadUseCase;
     private final GuardarParqueoUseCase guardarParqueoUseCase;
 
-    public RegistrarEntradaService(VerificarVehiculoNoActivoUseCase verificarVehiculoNoActivoUseCase, RevisarDisponibilidadUseCase revisarDisponibilidadUseCase, GuardarParqueoUseCase guardarParqueoUseCase) {
+    public RegistrarEntradaUseCase(VerificarVehiculoNoActivoUseCase verificarVehiculoNoActivoUseCase, RevisarDisponibilidadUseCase revisarDisponibilidadUseCase, GuardarParqueoUseCase guardarParqueoUseCase) {
         this.verificarVehiculoNoActivoUseCase = verificarVehiculoNoActivoUseCase;
         this.revisarDisponibilidadUseCase = revisarDisponibilidadUseCase;
         this.guardarParqueoUseCase = guardarParqueoUseCase;

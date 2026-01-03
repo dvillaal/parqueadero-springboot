@@ -1,14 +1,15 @@
-package com.david.parqueadero.application.usecases.RegistrarEntrada;
+package com.david.parqueadero.domain.useCases.RegistrarEntrada;
 
 import com.david.parqueadero.domain.model.Parqueo;
 import com.david.parqueadero.domain.model.Vehiculo;
 import com.david.parqueadero.domain.model.enums.TipoVehiculo;
 import com.david.parqueadero.domain.port.out.ParqueoRepositoryPort;
 import com.david.parqueadero.domain.port.out.VehiculoRepositoryPort;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
+@Component
 public class GuardarParqueoUseCase {
     private final ParqueoRepositoryPort parqueoRepositoryPort;
     private final VehiculoRepositoryPort vehiculoRepositoryPort;

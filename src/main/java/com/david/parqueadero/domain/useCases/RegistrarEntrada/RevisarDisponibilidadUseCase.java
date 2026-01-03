@@ -1,16 +1,18 @@
-package com.david.parqueadero.application.usecases.RegistrarEntrada;
+package com.david.parqueadero.domain.useCases.RegistrarEntrada;
 
-import com.david.parqueadero.domain.model.Parqueadero;
+import com.david.parqueadero.config.ParqueaderoConfig;
 import com.david.parqueadero.domain.model.enums.TipoVehiculo;
 import com.david.parqueadero.domain.port.out.ParqueoRepositoryPort;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RevisarDisponibilidadUseCase {
     private final ParqueoRepositoryPort parqueoRepositoryPort;
-    private final Parqueadero parqueadero;
+    private final ParqueaderoConfig config;
 
-    public RevisarDisponibilidadUseCase(ParqueoRepositoryPort parqueoRepositoryPort, Parqueadero parqueadero) {
+    public RevisarDisponibilidadUseCase(ParqueoRepositoryPort parqueoRepositoryPort, ParqueaderoConfig config) {
         this.parqueoRepositoryPort = parqueoRepositoryPort;
-        this.parqueadero = parqueadero;
+        this.config = config;
     }
 
     public void revisarDisponibilidad(TipoVehiculo tipo) {
@@ -18,9 +20,9 @@ public class RevisarDisponibilidadUseCase {
         int capacidadMaxima;
 
         if (tipo == TipoVehiculo.CARRO) {
-            capacidadMaxima = parqueadero.getCapacidadMaximaCarros();
+            capacidadMaxima = config.getCapacidadCarros();
         } else {
-            capacidadMaxima = parqueadero.getCapacidadMaximaMotos();
+            capacidadMaxima = config.getCapacidadMotos();
         }
 
         if (ocupados >= capacidadMaxima) {

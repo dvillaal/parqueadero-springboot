@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @Repository
 public interface JpaParqueoRepository extends JpaRepository<Parqueo, UUID> {
-    Optional<Parqueo> buscarActivoPorPlaca(String placa);
+    Optional<Parqueo> findByVehiculo_PlacaAndHoraSalidaIsNull(String placa);
 
-    int contarVehiculosPorTipo(TipoVehiculo tipoVehiculo);
+    int countByVehiculoTipo(TipoVehiculo tipoVehiculo);
 }

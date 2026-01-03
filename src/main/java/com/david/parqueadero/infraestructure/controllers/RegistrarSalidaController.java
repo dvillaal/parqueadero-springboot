@@ -1,30 +1,26 @@
 package com.david.parqueadero.infraestructure.controllers;
 
-import com.david.parqueadero.application.services.RegistrarSalidaService;
+import com.david.parqueadero.infraestructure.handlers.RegistrarSalidaHandler;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
-@RequestMapping("/parqueos")
+@RequestMapping("/parqueadero")
 public class RegistrarSalidaController {
 
-    private final RegistrarSalidaService registrarSalidaService;
+    private final RegistrarSalidaHandler registrarSalidaHandler;
 
-    public RegistrarSalidaController(RegistrarSalidaService registrarSalidaService) {
-        this.registrarSalidaService = registrarSalidaService;
+    public RegistrarSalidaController(RegistrarSalidaHandler registrarSalidaHandler) {
+        this.registrarSalidaHandler = registrarSalidaHandler;
     }
 
     @PostMapping("/salida")
     public ResponseEntity<Void> registrarSalida(
-            @RequestParam String placa
+            @RequestBody Map<String, String> body
     ) {
-        registrarSalidaService.registrarSalida(placa);
+        registrarSalidaHandler.handle(body.get("placa"));
         return ResponseEntity.ok().build();
-    }
-
-
     }
 }

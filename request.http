@@ -1,0 +1,16 @@
+POST http://localhost:8080/parqueadero/entrada
+Content-Type: application/json
+
+{
+  "placa": "ABC125",
+  "tipoVehiculo": "MOTO"
+}
+
+###
+
+POST http://localhost:8080/parqueadero/salida
+Content-Type: application/json
+
+{
+  "placa": "ABC125"
+}

@@ -1,28 +1,26 @@
 package com.david.parqueadero.infraestructure.controllers;
 
-import com.david.parqueadero.application.services.RegistrarEntradaService;
 import com.david.parqueadero.domain.model.enums.TipoVehiculo;
+import com.david.parqueadero.infraestructure.handlers.RegistrarEntradaHandler;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
-@RequestMapping("/parqueos")
+@RequestMapping("/parqueadero")
 public class RegistrarEntradaController {
-    private final RegistrarEntradaService registrarEntradaService;
+    private final RegistrarEntradaHandler registrarEntradaHandler;
 
-    public RegistrarEntradaController(RegistrarEntradaController registrarSalidaService, RegistrarEntradaService registrarEntradaService) {
-        this.registrarEntradaService = registrarEntradaService;
+    public RegistrarEntradaController(RegistrarEntradaHandler registrarEntradaHandler) {
+        this.registrarEntradaHandler = registrarEntradaHandler;
     }
 
     @PostMapping("/entrada")
     public ResponseEntity<Void> registrarEntrada(
-            @RequestParam String placa,
-            @RequestParam TipoVehiculo tipoVehiculo
+            @RequestBody Map<String, String> body
     ) {
-        registrarEntradaService.registrarEntrada(placa, tipoVehiculo);
+        registrarEntradaHandler.handle(body.get("placa"), TipoVehiculo.valueOf(body.get("tipoVehiculo")));
         return ResponseEntity.ok().build();
     }
 }

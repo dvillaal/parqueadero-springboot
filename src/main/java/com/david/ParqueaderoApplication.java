@@ -1,4 +1,4 @@
-package com.david.parqueadero;
+package com.david;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

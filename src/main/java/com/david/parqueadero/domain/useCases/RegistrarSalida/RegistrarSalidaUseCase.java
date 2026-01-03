@@ -1,11 +1,12 @@
-package com.david.parqueadero.application.services;
+package com.david.parqueadero.domain.useCases.RegistrarSalida;
 
-import com.david.parqueadero.application.usecases.RegistrarSalida.*;
 import com.david.parqueadero.domain.model.Parqueo;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
-public class RegistrarSalidaService {
+@Component
+public class RegistrarSalidaUseCase {
     private final VerificarVehiculoActivoUseCase verificarVehiculoActivoUseCase;
     private final ActualizarTiempoUseCase actualizarTiempoUseCase;
     private final CalcularTiempoUseCase calcularTiempoUseCase;
@@ -13,7 +14,7 @@ public class RegistrarSalidaService {
     private final ActualizarCobroUseCase actualizarCobroUseCase;
     private final ActualizarParqueoUseCase actualizarParqueoUseCase;
 
-    public RegistrarSalidaService(VerificarVehiculoActivoUseCase verificarVehiculoActivoUseCase, ActualizarTiempoUseCase actualizarTiempoUseCase, CalcularTiempoUseCase calcularTiempoUseCase, CalcularCobroUseCase calcularCobroUseCase, ActualizarParqueoUseCase actualizarParqueoUseCase, ActualizarCobroUseCase actualizarCobroUseCase) {
+    public RegistrarSalidaUseCase(VerificarVehiculoActivoUseCase verificarVehiculoActivoUseCase, ActualizarTiempoUseCase actualizarTiempoUseCase, CalcularTiempoUseCase calcularTiempoUseCase, CalcularCobroUseCase calcularCobroUseCase, ActualizarParqueoUseCase actualizarParqueoUseCase, ActualizarCobroUseCase actualizarCobroUseCase) {
         this.verificarVehiculoActivoUseCase = verificarVehiculoActivoUseCase;
         this.actualizarTiempoUseCase = actualizarTiempoUseCase;
         this.calcularTiempoUseCase = calcularTiempoUseCase;
