@@ -1,4 +1,4 @@
-package com.david.parqueadero.config;
+package com.david.parqueadero.application.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

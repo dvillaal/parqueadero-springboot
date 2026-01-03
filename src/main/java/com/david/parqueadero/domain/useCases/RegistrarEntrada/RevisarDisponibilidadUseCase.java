@@ -1,6 +1,6 @@
 package com.david.parqueadero.domain.useCases.RegistrarEntrada;
 
-import com.david.parqueadero.config.ParqueaderoConfig;
+import com.david.parqueadero.application.config.ParqueaderoConfig;
 import com.david.parqueadero.domain.model.enums.TipoVehiculo;
 import com.david.parqueadero.domain.port.out.ParqueoRepositoryPort;
 import org.springframework.stereotype.Component;
