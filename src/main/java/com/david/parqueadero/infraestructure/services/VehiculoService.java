@@ -9,19 +9,19 @@ import java.util.Optional;
 
 @Component
 public class VehiculoService implements VehiculoRepositoryPort {
-    private final JpaVehiculoRepository jpaRepository;
+    private final JpaVehiculoRepository jpaVehiculoRepository;
 
-    public VehiculoService(JpaVehiculoRepository jpaRepository) {
-        this.jpaRepository = jpaRepository;
+    public VehiculoService(JpaVehiculoRepository jpaVehiculoRepository) {
+        this.jpaVehiculoRepository = jpaVehiculoRepository;
     }
 
     @Override
-    public void guardarVehiculo(com.david.parqueadero.domain.model.Vehiculo vehiculo) {
-        jpaRepository.save(vehiculo);
+    public void guardarVehiculo(Vehiculo vehiculo) {
+        jpaVehiculoRepository.save(vehiculo);
     }
 
     @Override
     public Optional<Vehiculo> buscarPorPlaca(String placa) {
-        return jpaRepository.findByPlaca(placa);
+        return jpaVehiculoRepository.findByPlaca(placa);
     }
 }
