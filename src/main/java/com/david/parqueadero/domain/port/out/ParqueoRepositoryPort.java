@@ -3,6 +3,7 @@ package com.david.parqueadero.domain.port.out;
 import com.david.parqueadero.domain.model.Parqueo;
 import com.david.parqueadero.domain.model.enums.TipoVehiculo;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ParqueoRepositoryPort {
@@ -11,4 +12,6 @@ public interface ParqueoRepositoryPort {
     Optional<Parqueo> buscarActivoPorPlaca(String placa);
 
     void guardarParqueo(Parqueo parqueo);
+
+    List<Parqueo> obtenerParqueosActivos();
 }

@@ -6,28 +6,34 @@ import com.david.parqueadero.domain.port.out.ParqueoRepositoryPort;
 import com.david.parqueadero.infraestructure.repositories.JpaParqueoRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
 public class ParqueoService implements ParqueoRepositoryPort {
-    private final JpaParqueoRepository jpaRepository;
+    private final JpaParqueoRepository jpaParqueoRepository;
 
     public ParqueoService(JpaParqueoRepository jpaParqueoRepository) {
-        this.jpaRepository = jpaParqueoRepository;
+        this.jpaParqueoRepository = jpaParqueoRepository;
     }
 
     @Override
     public int contarVehiculosPorTipo(TipoVehiculo tipoVehiculo) {
-        return jpaRepository.countByVehiculoTipo(tipoVehiculo);
+        return jpaParqueoRepository.countByVehiculoTipo(tipoVehiculo);
     }
 
     @Override
     public Optional<Parqueo> buscarActivoPorPlaca(String placa) {
-        return jpaRepository.findByVehiculo_PlacaAndHoraSalidaIsNull(placa);
+        return jpaParqueoRepository.findByVehiculo_PlacaAndHoraSalidaIsNull(placa);
     }
 
     @Override
     public void guardarParqueo(Parqueo parqueo) {
-        jpaRepository.save(parqueo);
+        jpaParqueoRepository.save(parqueo);
+    }
+
+    @Override
+    public List<Parqueo> obtenerParqueosActivos() {
+        return jpaParqueoRepository.findByHoraSalidaIsNull();
     }
 }
