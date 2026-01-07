@@ -8,9 +8,50 @@ Content-Type: application/json
 
 ###
 
+POST http://localhost:8080/parqueadero/entrada
+Content-Type: application/json
+
+{
+  "placa": "NHZ888",
+  "tipoVehiculo": "CARRO"
+}
+
+###
+
+POST http://localhost:8080/parqueadero/entrada
+Content-Type: application/json
+
+{
+  "placa": "MTY178",
+  "tipoVehiculo": "CARRO"
+}
+
+###
+
+POST http://localhost:8080/parqueadero/entrada
+Content-Type: application/json
+
+{
+  "placa": "ANX73G",
+  "tipoVehiculo": "MOTO"
+}
+
+###
+
+POST http://localhost:8080/parqueadero/entrada
+Content-Type: application/json
+
+{
+  "placa": "RZU25E",
+  "tipoVehiculo": "MOTO"
+}
+
+###
+
 POST http://localhost:8080/parqueadero/salida
 Content-Type: application/json
 
 {
   "placa": "ABC125"
 }
+
